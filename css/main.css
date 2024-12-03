@@ -1,0 +1,18 @@
+@import "reset.css";
+
+/*шрифт может быть другой*/
+@import url('https://fonts.cdnfonts.com/css/arial-mt?styles=48912,48914,48916,48920,48930,48911');
+
+/*этот точно должен быть*/
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+body {
+/* шрифт сюда*/
+}
+
+.wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+
