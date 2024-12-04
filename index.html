@@ -203,16 +203,16 @@
             <h2 class="catalog-title">наший каталог</h2>
             <div class="block-catalog">
                 <ul class="list-nav_catalog">
-                    <li class="list-elem catalog-cabins">побутівки</li>
-                    <li class="list-elem catalog-san-blocks">Санітарні блоки</li>
-                    <li class="list-elem catalog-containers">контейнери</li>
+                    <li class="list-elem catalog-cabins" data-target="blocks-cabins">Побутівки</li>
+                    <li class="list-elem catalog-san-blocks" data-target="blocks-san-blocks">Санітарні блоки</li>
+                    <li class="list-elem catalog-containers active" data-target="blocks-containers">Контейнери</li>
                 </ul>
                 <div class="product-catalogs">
                     <div class="blocks-containers containers">
                         <div class="container container-block">
                             <div class="block-top">
                                 <img alt="Container" class="card-img" src="./images/containers/container1.webp">
-                                <p class="card-description">Розмір (ШхДхВ): 2.4м х 2м х 2.6м</p>
+                                <p class="card-description description-cabin">Розмір (ШхДхВ): 2.4м х 2м х 2.6м</p>
                             </div>
                             <div class="block-down">
                                 <h3 class="card-name">Контейнер 20 фут</h3>
@@ -223,7 +223,7 @@
                         <div class="container container-block">
                             <div class="block-top">
                                 <img alt="Container" class="card-img" src="./images/containers/container2.webp">
-                                <p class="card-description">Розмір (ШхДхВ): 1.3м х 2.1м х 2.6м</p>
+                                <p class="card-description description-cabin">Розмір (ШхДхВ): 1.3м х 2.1м х 2.6м</p>
                             </div>
                             <div class="block-down">
                                 <h3 class="card-name">Контейнер 40 фут</h3>
@@ -234,7 +234,7 @@
                         <div class="container container-block">
                             <div class="block-top">
                                 <img alt="Container" class="card-img" src="./images/containers/container3.webp">
-                                <p class="card-description">Розмір (ШхДхВ): 2.1м х 2.6м х 2.6м</p>
+                                <p class="card-description description-cabin">Розмір (ШхДхВ): 2.1м х 2.6м х 2.6м</p>
                             </div>
                             <div class="block-down">
                                 <h3 class="card-name">Контейнер 5 фут</h3>
@@ -245,7 +245,7 @@
                         <div class="container container-block">
                             <div class="block-top">
                                 <img alt="Container" class="card-img" src="./images/containers/container4.webp">
-                                <p class="card-description">Розмір (ШхДхВ): 2.1м х 2.6м х 2.6м</p>
+                                <p class="card-description description-cabin">Розмір (ШхДхВ): 2.1м х 2.6м х 2.6м</p>
                             </div>
                             <div class="block-down">
                                 <h3 class="card-name">Контейнер 3 фут</h3>
@@ -291,7 +291,7 @@
                                 <img alt="Cabin" class="container-img" src="./images/cabins/cabin3.webp">
                                 <p class="container-description description-cabin">
                                     <span>Акція! Оренда за 2500 грн./міс.</span>
-                                    при передоплаті за півроку!
+                                    При передоплаті за півроку!
                                     Основна сфера використання блок-контейнерів – це зберігання будматеріалів та сухих
                                     сипких сумішей на будівельному об'єкті.
                                 </p>
@@ -304,10 +304,10 @@
                         </div>
                         <div class="container cabin">
                             <div class="block-top">
-                                <img alt="Cabin" class="container-img" src="./images/cabins/cabin3.webp">
+                                <img alt="Cabin" class="container-img" src="./images/cabins/cabin4.webp">
                                 <p class="container-description description-cabin">
                                     <span>Акція! Оренда за 2500 грн./міс.</span>
-                                    при передоплаті за півроку! Усередині такої конструкції створено затишні умови
+                                    При передоплаті за півроку! Усередині такої конструкції створено затишні умови
                                     проживання для будівельників. Конструкції виготовлені із металевого каркасу,
                                     стійкого до корозії.
                                 </p>
@@ -322,57 +322,77 @@
                     <div class="blocks-san-blocks blocks">
                         <div class="container san-block">
                             <div class="block-top">
-                                <img alt="Cabin" class="container-img container-last" src="./images/sanitary-blocks/san-block1.webp">
+                                <img alt="Cabin" class="container-img container-last"
+                                     src="./images/sanitary-blocks/san-block1.webp">
                                 <p class="container-description description-cabin">Для комфортних умов працівників на
                                     будівельному
                                     майданчику.</p>
                             </div>
                             <div class="container-down">
-                                <h3 class="card-name">Санітарний блок 6x4m</h3>
+                                <h3 class="card-name">Санітарний блок<br> 6x4m</h3>
                                 <p class="card-outline">Оренда від</p>
                                 <p class="card-prise">16 000 грн</p>
                             </div>
                         </div>
                         <div class="container san-block">
                             <div class="block-top">
-                                <img alt="Cabin" class="container-img container-last" src="./images/sanitary-blocks/san-block2.webp">
+                                <img alt="Cabin" class="container-img container-last"
+                                     src="./images/sanitary-blocks/san-block2.webp">
                                 <p class="container-description description-cabin">Для комфортних умов працівників на
                                     будівельному
                                     майданчику.</p>
                             </div>
                             <div class="container-down">
-                                <h3 class="card-name">Санітарний блок 2.5x2.5m</h3>
+                                <h3 class="card-name">Санітарний блок<br> 2.5x2.5m</h3>
                                 <p class="card-outline">Оренда від</p>
                                 <p class="card-prise">7000 грн</p>
                             </div>
                         </div>
                         <div class="container san-block">
                             <div class="block-top">
-                                <img alt="Cabin" class="container-img container-last" src="./images/sanitary-blocks/san-block3.webp">
+                                <img alt="Cabin" class="container-img container-last"
+                                     src="./images/sanitary-blocks/san-block3.webp">
                                 <p class="container-description description-cabin">
                                     Для комфортних умов працівників на будівельному майданчику.
                                 </p>
                             </div>
                             <div class="container-down">
-                                <h3 class="card-name">Санітарний блок 6x2.4m</h3>
+                                <h3 class="card-name">Санітарний блок<br> 6x2.4m</h3>
                                 <p class="card-outline">Оренда від</p>
                                 <p class="card-prise">14 000 грн</p>
                             </div>
                         </div>
                         <div class="container san-block">
                             <div class="block-top">
-                                <img alt="Cabin" class="container-img container-last" src="./images/sanitary-blocks/san-block4.webp">
+                                <img alt="Cabin" class="container-img container-last"
+                                     src="./images/sanitary-blocks/san-block4.webp">
                                 <p class="container-description description-cabin">
                                     Для комфортних умов працівників на будівельному майданчику.
                                 </p>
                             </div>
                             <div class="container-down">
-                                <h3 class="card-name">Санітарний блок 5x2.4m</h3>
+                                <h3 class="card-name">Санітарний блок<br> 5x2.4m</h3>
                                 <p class="card-outline">Оренда від</p>
                                 <p class="card-prise">10 000 грн</p>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="block-btn">
+                    <svg class="js-next" fill="none" height="32" viewBox="0 0 19 32" width="19"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 16L0 0H3L19 16L3 32H0L16 16Z" fill="#CBCBCB"/>
+                    </svg>
+                    <div class="dots">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <svg class="js-prew" fill="none" height="34" viewBox="0 0 22 34" width="22"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 17L20 33L17 33L1 17L17 1L20 1L4 17Z" fill="#CBCBCB"/>
+                    </svg>
+                    <!--                    при ховере stroke="#4F4F4F"-->
                 </div>
             </div>
         </div>
