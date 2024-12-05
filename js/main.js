@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
     setupCategorySwitching()
     setupContainers();
     setupCategories();
+    chengeBtn();
+    openText()
 });
 
 
@@ -149,3 +151,43 @@ const setupCategories = () => {
         });
     });
 };
+
+//chenge btn text
+const chengeBtn = () => {
+    const btns = document.querySelectorAll(".text-your_btn");
+
+    btns.forEach(button => {
+        button.addEventListener("click", () => {
+            const textBig = document.querySelector(".texts-your_big");
+            const isHidden = textBig.style.display === "none" || !textBig.style.display;
+            textBig.style.display = isHidden ? "block" : "none";
+            button.textContent = isHidden ? "Приховати" : "Читати більше";
+        });
+    });
+}
+
+// вопросы ответы
+const openText = () => {
+    const questions = document.querySelectorAll(".responses-block");
+    questions.forEach(questionBlock => {
+        const questionTitle = questionBlock.querySelector(".responses-name");
+        const answerText = questionBlock.querySelector(".responses-text");
+
+        questionTitle.addEventListener("click", () => {
+            questions.forEach(item => {
+                const otherAnswer = item.querySelector(".responses-text");
+                if (item !== questionBlock) {
+                    otherAnswer.style.maxHeight = 0;
+                    otherAnswer.classList.remove("open-text");
+                    item.classList.remove("active");
+                }
+            });
+
+            const isActive = questionBlock.classList.contains("active");
+            answerText.style.maxHeight = isActive ? 0 : answerText.scrollHeight + "px";
+            answerText.classList.toggle("open-text", !isActive);
+            questionBlock.classList.toggle("active");
+        });
+    });
+}
+
