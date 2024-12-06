@@ -1,12 +1,83 @@
 document.addEventListener("DOMContentLoaded", () => {
+    menuMobile();
     setupCategorySwitching()
     setupContainers();
     setupCategories();
     chengeBtn();
-    openText()
+    openText();
+    slidProducts();
+    slidSmollDot();
 });
 
+// нав меню
+const menuMobile = () => {
+    const btnMenu = document.querySelector(".menu");
+    const btnClose = document.querySelector(".close");
+    const navigation = document.querySelector(".nav-page");
+    const header = document.querySelector(".header");
+    const listElements = document.querySelectorAll(".item-nav");
 
+    const openMenu = () => {
+        navigation.classList.add("open");
+        header.classList.add("active");
+        btnMenu.classList.add("hide");
+        btnClose.classList.add("active");
+        document.body.style.overflow = "hidden";
+    };
+
+    const closeMenu = () => {
+        navigation.classList.remove("open");
+        header.classList.remove("active");
+        btnMenu.classList.remove("hide");
+        btnClose.classList.remove("active");
+        document.body.style.overflow = "";
+    };
+
+    btnMenu.addEventListener("click", openMenu);
+    btnClose.addEventListener("click", closeMenu);
+
+    listElements.forEach(element => {
+        const link = element.querySelector(".link-item_nav");
+        link.addEventListener("click", event => {
+            event.preventDefault();
+            const targetId = link.getAttribute("href").substring(1);
+            const targetSection = document.getElementById(targetId);
+            closeMenu();
+            targetSection.scrollIntoView({behavior: "smooth"});
+        });
+    });
+};
+
+// для слайда преимуществ
+const slidSmollDot = () => {
+    const sliderContainer = document.querySelector('.advantages-blocks');
+    const slides = document.querySelectorAll('.advantag-block');
+    const dots = document.querySelectorAll('.dot');
+
+    let currentSlideIndex = 0;
+
+    const updateSlider = (index) => {
+        // Обновляем позицию слайдера
+        const offset = -index * slides[0].offsetWidth;
+        sliderContainer.style.transform = `translateX(${offset}px)`;
+
+        // Обновляем активную точку
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+    };
+
+    // Добавляем обработчик события на точки
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlideIndex = index;
+            updateSlider(currentSlideIndex);
+        });
+    });
+
+    // Инициализация
+    updateSlider(currentSlideIndex);
+};
 // вибор категории
 const setupCategorySwitching = () => {
     const categoryItems = document.querySelectorAll(".list-elem");
@@ -190,4 +261,109 @@ const openText = () => {
         });
     });
 }
+
+// для слайда категорий
+const slidProducts = () => {
+    const initSlider = (containerSelector, prevBtnSelector, nextBtnSelector, itemClass, minVisibleItems, maxVisibleItems) => {
+        const itemsAll = document.querySelectorAll(containerSelector);
+        const prevButton = document.querySelector(prevBtnSelector);
+        const nextButton = document.querySelector(nextBtnSelector);
+        let visibleItems, currentItem = 0, itemWidth = 322;
+
+        const updateItemWidth = () => {
+            const item = itemsAll[0];
+            if (item) itemWidth = item.offsetWidth;
+        };
+
+        const updateItems = () => {
+            updateItemWidth();
+            const offset = -currentItem * itemWidth;
+            itemsAll.forEach(item => item.style.transform = `translateX(${offset}px)`);
+            prevButton.classList.toggle("disabled", currentItem === 0);
+            nextButton.classList.toggle("disabled", currentItem >= itemsAll.length - visibleItems);
+        };
+
+        const updateSettings = () => {
+            if (window.matchMedia("(min-width: 1200px)").matches) {
+                visibleItems = itemsAll.length;
+                prevButton.style.display = "none";
+                nextButton.style.display = "none";
+            } else if (window.matchMedia("(min-width: 768px) and (max-width: 1199px)").matches) {
+                visibleItems = 2;
+                prevButton.style.display = "block";
+                nextButton.style.display = "block";
+                itemWidth = 50;
+            } else {
+                visibleItems = 1;
+                prevButton.style.display = "block";
+                nextButton.style.display = "block";
+                itemWidth = 100;
+            }
+            updateItems();
+        };
+
+        prevButton.addEventListener("click", () => {
+            if (currentItem > 0) {
+                currentItem--;
+                updateItems();
+            }
+        });
+
+        nextButton.addEventListener("click", () => {
+            if (currentItem < itemsAll.length - visibleItems) {
+                currentItem++;
+                updateItems();
+            }
+        });
+
+        const handleTouchEvents = () => {
+            let startX, isDragging = false;
+
+            const handleTouchStart = (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            };
+
+            const handleTouchMove = (e) => {
+                if (!isDragging) return;
+                const deltaX = startX - e.touches[0].clientX;
+                if (Math.abs(deltaX) > 50) {
+                    if (deltaX > 0 && currentItem < itemsAll.length - visibleItems) currentItem++;
+                    else if (deltaX < 0 && currentItem > 0) currentItem--;
+                    updateItems();
+                    isDragging = false;
+                }
+            };
+
+            const handleTouchEnd = () => {
+                isDragging = false;
+            };
+
+            itemsAll.forEach(item => {
+                item.addEventListener("touchstart", handleTouchStart);
+                item.addEventListener("touchmove", handleTouchMove);
+                item.addEventListener("touchend", handleTouchEnd);
+            });
+        };
+
+        updateSettings();
+        window.addEventListener("resize", updateSettings);
+        handleTouchEvents();
+    };
+
+    initSlider(".container-block", ".js-prew", ".js-next", "container-block", 1, 2);
+    initSlider(".cabin", ".js-prew-cabin", ".js-next-cabin", "cabin", 1, 2);
+    initSlider(".san-block", ".js-prew-boks", ".js-next-boks", "san-block", 1, 2);
+}
+
+
+
+
+
+
+
+
+
+
+
 
